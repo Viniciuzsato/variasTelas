@@ -1,9 +1,12 @@
 import React from "react";
 import { Button, StyleSheet, Text, View } from "react-native";
-import { useNavigation} from '@react-navigation/native';
+import { useNavigation, useRoute} from '@react-navigation/native';
 
 function AboutScreen() {
     const navigation = useNavigation();
+    const route = useRoute();
+
+    const name = route.params?.name ?? 'Visitante'
 
     const handleBackButton = () => {
         navigation.goBack();
@@ -11,7 +14,7 @@ function AboutScreen() {
 
     return(
         <View style={styles.container}>
-            <Text>Sobre</Text>
+            <Text>Tela de sobre: {name}</Text>
             <Button title="Voltar" onPress={handleBackButton} />
         </View>
     );
