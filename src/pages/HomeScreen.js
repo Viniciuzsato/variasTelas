@@ -14,7 +14,7 @@ function HomeScreen() {
 
     return(
         <View style={styles.container}>
-            <Text>Digite seu nome</Text>
+            <Text>Digite seu nome:</Text>
             <TextInput 
                 style={styles.input}
                 value={name}
