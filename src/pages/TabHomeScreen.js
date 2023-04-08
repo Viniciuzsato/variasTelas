@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from "react-native";
 function TabHomeScreen() {
     return(
         <View style={styles.container}>
-            <Text>Tab HOME</Text>
+            <Text>Tab HOME!!</Text>
         </View>
     );
 }
