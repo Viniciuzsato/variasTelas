@@ -2,32 +2,22 @@ import React from "react";
 import { Image } from "react-native";
 import { createBottomTabNavigator} from "@react-navigation/bottom-tabs";
 
-import TabAboutScreen from "../pages/TabAboutScreen"
-import TabHomeScreen from "../pages/TabHomeScreen"
+import CustomTabBar from "../components/CustomTabBar";
 
+import TabAboutScreen from "../pages/TabAboutScreen";
+import TabHomeScreen from "../pages/TabHomeScreen";
+import TabConfigScreen from "../pages/TabConfigScreen";
 
 const Tab = createBottomTabNavigator();
 
 export default () => (
-    <Tab.Navigator
-        screenOptions={({route}) => ({
-            tabBarIcon: () => {
-                let imgSource = null;
-
-                switch(route.name) {
-                    case 'TabHome':
-                        imgSource = require('../assets/home.png');
-                    break;
-                    case 'TabAbout':
-                        imgSource = require('../assets/interface.png');
-                    break;
-                }
-
-                return <Image source={imgSource} style={{width:24, height:24}}/>
-            }
-        })}
+    <Tab.Navigator 
+        tabBar={(props) => <CustomTabBar {...props} />}
+        initialRouteName="TabHome"
+        screenOptions={{headerShown:false}}
     >
-        <Tab.Screen name="TabHome" component={TabHomeScreen}/>
-        <Tab.Screen name="TabAbout" component={TabAboutScreen}/>
+        <Tab.Screen name="TabAbout" component={TabAboutScreen} options={{tabBarLabel:'About'}}/>
+        <Tab.Screen name="TabHome" component={TabHomeScreen} options={{tabBarLabel:'Home'}}/>
+        <Tab.Screen name="TabConfig" component={TabConfigScreen} options={{tabBarLabel:'Config'}}/>
     </Tab.Navigator>
 );
